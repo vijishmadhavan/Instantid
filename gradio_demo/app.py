@@ -428,10 +428,10 @@ def main(pretrained_model_name_or_path="wangqixun/YamerMIX_v8"):
         gr.Examples(
             examples=get_example(),
             inputs=[face_file, prompt, style, negative_prompt],
-            run_on_click=True,
+            run_on_click=False,
             fn=run_for_examples,
             outputs=[gallery, usage_tips],
-            cache_examples=True,
+            cache_examples=False,
         )
         
         gr.Markdown(article)
