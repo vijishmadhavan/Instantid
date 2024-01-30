@@ -94,6 +94,9 @@ def main(pretrained_model_name_or_path="wangqixun/YamerMIX_v8"):
     pipe.disable_lora()
     #pipe.enable_model_cpu_offload()
 
+    if 'xformers' in sys.modules:
+      pipe.enable_xformers_memory_efficient_attention()
+
     def randomize_seed_fn(seed: int, randomize_seed: bool) -> int:
         if randomize_seed:
             seed = random.randint(0, MAX_SEED)
@@ -316,7 +319,7 @@ def main(pretrained_model_name_or_path="wangqixun/YamerMIX_v8"):
             
 
         
-        demo.launch()
+        demo.launch(share=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
